@@ -2,5 +2,6 @@ export type User = {
     fullName: string;
     id: UniqueId;
     email: Email;
-    username: string;
 }
+
+export type UserName = string;
