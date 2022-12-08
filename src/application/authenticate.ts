@@ -8,7 +8,9 @@ export function useLoginAuthenticate() {
 
     async function loginAuthenticate(email: Email, password: string): Promise<void> {
         const user = await loginAuth.loginAuth(email, password);
-        storage.updateUser(user)
+        console.log('login authenticate')
+        console.log(user)
+        // storage.updateUser(user)
     }
 
     return {
