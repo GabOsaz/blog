@@ -9,6 +9,7 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "@parse/react-ssr": "^0.0.1-alpha.18",
     "next": "13.0.5",
     "parse": "^3.5.1",
     "react": "18.2.0",
