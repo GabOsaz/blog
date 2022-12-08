@@ -10,12 +10,11 @@ export function useLoginAuthenticate() {
         const user = await loginAuth.loginAuth(email, password);
         console.log('login authenticate')
         console.log(user)
-        // storage.updateUser(user)
+        storage.updateUser(user)
     }
 
     return {
         user: storage.user,
         loginAuthenticate,
     }
-
 }
