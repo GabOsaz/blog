@@ -1,0 +1,109 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+}
+
+.introText {
+  text-align: center;
+  display: grid;
+  gap: 0.2em;
+  margin-bottom: 1.5em;
+}
+
+.welcomeText {
+  font-size: large;
+  font-weight: 550;
+}
+
+.loginText {
+  font-size: 1.5rem;
+  letter-spacing: 0.1cm;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.infoText {
+  font-weight: 500;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
+
+.inputGroup label {
+  font-size: medium;
+  margin: 0.4rem 0;
+  font-weight: 500;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.9rem 0.8rem;
+  letter-spacing: 1px;
+  outline: none;
+  font-size: medium;
+  border-radius: 10px;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.button {
+  width: 100%;
+  text-align: center;
+  padding: 10px 16px;
+  background: rgb(112, 99, 99);
+  color: #fff;
+}
+
+.button:hover {
+  color: #0070f3;
+  background: rgba(255, 255, 255);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background: rgba(134, 121, 121, 0.6);
+}
+
+.button:disabled:hover {
+  cursor: not-allowed;
+  color: #0070f3;
+  background: rgba(255, 255, 255);
+}
+
+.left {
+  display: block;
+  border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 821px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .left {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 812px) {
+  .inputGroup {
+    width: 30vw;
+  }
+}
