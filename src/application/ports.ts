@@ -12,3 +12,8 @@ export interface UserStorageService {
     user?: User;
     updateUser(user: User): void;
 }
+
+export interface NotificationService {
+    successNotification(message: string): void;
+    errorNotification(message: string): void;
+}
