@@ -5,7 +5,7 @@ export interface LoginAuthenticationService {
 }
 
 export interface SignUpAuthenticationService {
-    signupAuth(email: string, fullName: string, userName: string, password: string): Promise<User>
+    signupAuth(email: string, userName: string, password: string): Promise<User>
 }
 
 export interface UserStorageService {

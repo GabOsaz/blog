@@ -1,7 +1,7 @@
 import { LoginAuthenticationService, SignUpAuthenticationService, NotificationService } from '../application/ports';
 import { useNotification } from './notificationAdapter';
 
-export function useSignAuth():SignUpAuthenticationService {
+export function useSignUpAuth():SignUpAuthenticationService {
     const notifier:NotificationService = useNotification();
 
     return {

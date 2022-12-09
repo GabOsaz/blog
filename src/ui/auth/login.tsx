@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useLoginAuthenticate } from "../../application/authenticate";
 import styles from "./Auth.module.css";
 import { useRouter } from "next/router";
-import { userStorageAdapter } from "src/services/storageAdapter";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,8 +10,6 @@ function Login() {
   const [btnDisabled, setBtnDisabled] = useState(true);
   const router = useRouter();
 
-  const storage: UserStorageService = userStorageAdapter();
-
   const { user, loginAuthenticate } = useLoginAuthenticate();
 
   if (!!user) {
@@ -20,8 +17,6 @@ function Login() {
   }
 
   console.log(user);
-
-  console.log(storage);
 
   function handleErrors() {
     if (email.length !== 0 && password.length !== 0) {
