@@ -1,6 +1,31 @@
 import { LoginAuthenticationService, SignUpAuthenticationService, NotificationService } from '../application/ports';
 import { useNotification } from './notificationAdapter';
 
+export function useSignAuth():SignUpAuthenticationService {
+    const notifier:NotificationService = useNotification();
+
+    return {
+        async signupAuth(email:string, userName:string, password:string) {
+            try {
+                const parseUserObject = new Parse.User()
+                user.set("username", userName);
+                user.set("email",  email)
+                user.set("password", password)
+
+                await user.signUp()
+
+                notifier.successNotification('Signup Successful!')
+                
+                return user;
+                
+            } catch (error) {
+                console.log(error)
+                notifier.errorNotification(error.message)
+            }
+        }
+    }
+}
+
 export function useLoginAuth(): LoginAuthenticationService {
     const notifier: NotificationService = useNotification()
 
