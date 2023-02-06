@@ -1,12 +1,12 @@
-import { useLoginAuth, useSignUpAuth } from "src/services/authAdaper";
+import { useLoginAuth, useSignUpAuth, useLogOutAuth } from "src/services/authAdaper";
 import { userStorageAdapter } from "src/services/storageAdapter";
 import { LoginAuthenticationService, UserStorageService, SignUpAuthenticationService } from "./ports";
 
 export function useSignupAuthenticate() {
-    const  signupAuth:SignUpAuthenticationService = useSignUpAuth()
-    const storage:UserStorageService = userStorageAdapter()
+    const signupAuth: SignUpAuthenticationService = useSignUpAuth()
+    const storage: UserStorageService = userStorageAdapter()
 
-    async function signupAuthenticate(email: Email, userName:string, password:string): Promise<void> {
+    async function signupAuthenticate(email: Email, userName: string, password: string): Promise<void> {
         const user = await signupAuth.signupAuth(email, userName, password);
 
         storage.updateUser(user)
@@ -15,6 +15,20 @@ export function useSignupAuthenticate() {
     return {
         user: storage.user,
         signupAuthenticate
+    }
+}
+
+export function useLogOutAuthenticate() {
+    const storage: UserStorageService = userStorageAdapter()
+
+    async function logOutAuthenticate() {
+        useLogOutAuth()
+        storage.clearUser()
+    }
+
+    return {
+        logOutAuthenticate,
+        user: storage.user
     }
 }
 
