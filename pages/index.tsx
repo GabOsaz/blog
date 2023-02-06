@@ -33,8 +33,8 @@ export default function Home() {
           </div>
         ) : (
           <div>
-            Please create an account or <a href="/login">login</a> to your
-            account.
+            Please <a href="/register">create an</a> account or{" "}
+            <a href="/login">login</a> to your account.
           </div>
         )}
       </div>
