@@ -1,68 +1,43 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 import { userStorageAdapter } from "src/services/storageAdapter";
+import { useLogOutAuthenticate } from "src/application/authenticate";
 
 export default function Home() {
   const storage = userStorageAdapter();
-  console.log(storage);
+  const router = useRouter();
+  const email = storage.user.email;
+
+  const { logOutAuthenticate } = useLogOutAuthenticate();
+
+  const handleLogout = () => {
+    logOutAuthenticate();
+    router.push("/login");
+  };
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>IceBlogs v2</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <div>
+        {email !== "" ? (
+          <div>
+            Welcome aboard <b>{email}</b>
+            <div>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          </div>
+        ) : (
+          <div>
+            Please create an account or <a href="/login">login</a> to your
+            account.
+          </div>
+        )}
+      </div>
     </div>
   );
 }

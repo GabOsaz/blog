@@ -36,9 +36,14 @@ export const AuthProvider: React.FC = ({ children }: any) => {
     loadUserfromAsyncStorage();
   }, []);
 
+  const setInitialState = () => {
+    setUser(initialState);
+  };
+
   const value = {
     user,
     updateUser: setUser,
+    clearUser: () => setInitialState(),
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

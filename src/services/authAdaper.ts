@@ -1,6 +1,53 @@
 import { LoginAuthenticationService, SignUpAuthenticationService, NotificationService } from '../application/ports';
 import { useNotification } from './notificationAdapter';
 
+
+export async function useLogOutAuth() {
+    const notifier: NotificationService = useNotification();
+
+    try {
+        await Parse.User.logOut()
+        const currentUser = await Parse.User.current();
+        console.log(currentUser)
+
+        if (currentUser === null) {
+            notifier.successNotification('User has logged out successfully')
+            console.log("log out successful")
+        } else {
+            console.log("an error occurred while logging out this user please try again")
+        }
+
+    } catch (error) {
+        notifier.errorNotification('A problem occurred performing this action')
+    }
+
+}
+
+export function useSignUpAuth(): SignUpAuthenticationService {
+    const notifier: NotificationService = useNotification();
+
+    return {
+        async signupAuth(email: string, userName: string, password: string) {
+            try {
+                const parseUserObject = new Parse.User()
+                parseUserObject.set("username", userName);
+                parseUserObject.set("email", email)
+                parseUserObject.set("password", password)
+
+                await parseUserObject.signUp()
+
+                notifier.successNotification('Signup Successful!')
+
+                return parseUserObject;
+
+            } catch (error) {
+                console.log(error)
+                notifier.errorNotification(error.message)
+            }
+        }
+    }
+}
+
 export function useLoginAuth(): LoginAuthenticationService {
     const notifier: NotificationService = useNotification()
 
