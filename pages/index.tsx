@@ -7,9 +7,9 @@ import { useLogOutAuthenticate } from "src/application/authenticate";
 export default function Home() {
   const storage = userStorageAdapter();
   const router = useRouter();
-  const email = storage.user.email;
+  const userName = storage.user.userName;
 
-  const { logOutAuthenticate } = useLogOutAuthenticate();
+  const { user, logOutAuthenticate } = useLogOutAuthenticate();
 
   const handleLogout = () => {
     logOutAuthenticate();
@@ -24,9 +24,9 @@ export default function Home() {
       </Head>
 
       <div>
-        {email !== "" ? (
+        {userName !== "" ? (
           <div>
-            Welcome aboard <b>{email}</b>
+            Welcome aboard <b>{userName}</b>
             <div>
               <button onClick={handleLogout}>Logout</button>
             </div>
