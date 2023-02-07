@@ -12,9 +12,9 @@ function Login() {
 
   const { user, loginAuthenticate } = useLoginAuthenticate();
 
-  if (!!user) {
-    router.push("/");
-  }
+  // if (!!user) {
+  //   router.push("/");
+  // }
 
   console.log(user);
 
@@ -42,7 +42,7 @@ function Login() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.left}>left content</div>
+      <div className={styles.left}></div>
 
       <div className={styles.right}>
         <div className={styles.introText}>
@@ -86,6 +86,12 @@ function Login() {
               "Log in"
             )}
           </button>
+
+          <div className={styles.actionText}>
+            <span>
+              Don't own an account? <a href="/register">Register</a>
+            </span>
+          </div>
         </form>
       </div>
     </div>

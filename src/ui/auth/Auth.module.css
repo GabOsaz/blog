@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
+  color: #0a0a0a;
 }
 
 .right {
@@ -26,7 +27,6 @@
 
 .loginText {
   font-size: 1.5rem;
-  letter-spacing: 0.1cm;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -49,16 +49,16 @@
 .inputGroup label {
   font-size: medium;
   margin: 0.4rem 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .inputGroup input {
   width: 100%;
   padding: 0.9rem 0.8rem;
-  letter-spacing: 1px;
   outline: none;
   font-size: medium;
-  border-radius: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(112, 99, 99, 1);
   font-weight: 500;
   margin-bottom: 2rem;
 }
@@ -66,30 +66,45 @@
 .button {
   width: 100%;
   text-align: center;
-  padding: 10px 16px;
-  background: rgb(112, 99, 99);
+  padding: 12px 16px;
+  background: rgb(15, 15, 15);
+  border: 1px solid rgb(112, 99, 99);
+  font-size: 16px;
   color: #fff;
+  outline: none;
+  border-radius: 8px;
 }
 
 .button:hover {
   color: #0070f3;
   background: rgba(255, 255, 255);
+  transition: 0.5s ease-out;
 }
 
 .button:disabled {
   cursor: not-allowed;
-  background: rgba(134, 121, 121, 0.6);
+  background: rgb(29, 28, 28);
 }
 
 .button:disabled:hover {
   cursor: not-allowed;
-  color: #0070f3;
-  background: rgba(255, 255, 255);
+  color: #fcf9f9;
+  background: rgb(29, 28, 28);
+}
+
+.actionText {
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+.actionText a {
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .left {
   display: block;
-  border: 1px solid #ccc;
+  background: url("../../../assets/background.png");
 }
 
 @media screen and (max-width: 821px) {
