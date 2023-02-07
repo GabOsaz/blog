@@ -35,7 +35,7 @@ function RegisterComponent() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.left}>left content</div>
+      <div className={styles.left}></div>
 
       <div className={styles.right}>
         <div className={styles.introText}>
@@ -87,9 +87,15 @@ function RegisterComponent() {
             {formAction ? (
               <i className="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
             ) : (
-              "Log in"
+              "Register"
             )}
           </button>
+
+          <div className={styles.actionText}>
+            <span>
+              Already own an account? <a href="/login">Login</a>
+            </span>
+          </div>
         </form>
       </div>
     </div>
