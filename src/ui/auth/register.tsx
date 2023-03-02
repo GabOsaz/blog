@@ -10,7 +10,7 @@ function RegisterComponent() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [formAction, setFormAction] = useState<boolean>(false);
-  const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
+  const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
 
   async function handleSignup(e: React.FormEvent) {
     setFormAction(true);
@@ -80,10 +80,7 @@ function RegisterComponent() {
             />
           </div>
 
-          <button
-            className={styles.button}
-            disabled={formAction || btnDisabled}
-          >
+          <button className={styles.button} disabled={true}>
             {formAction ? (
               <i className="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
             ) : (
