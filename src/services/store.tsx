@@ -13,7 +13,7 @@ const initialState: User = {
   emailVerified: false,
 };
 
-export const AuthProvider: React.FC = ({ children }: any) => {
+export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState(initialState);
 
   useEffect(() => {
