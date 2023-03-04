@@ -1,9 +1,11 @@
+import { useRouter } from 'next/router';
 import { LoginAuthenticationService, SignUpAuthenticationService, NotificationService } from '../application/ports';
 import { useNotification } from './notificationAdapter';
 
 
 export async function useLogOutAuth() {
     const notifier: NotificationService = useNotification();
+    const router = useRouter()
 
     try {
         await Parse.User.logOut()
@@ -13,6 +15,7 @@ export async function useLogOutAuth() {
         if (currentUser === null) {
             notifier.successNotification('User has logged out successfully')
             console.log("log out successful")
+            router.push('/login')
         } else {
             console.log("an error occurred while logging out this user please try again")
         }
@@ -25,6 +28,7 @@ export async function useLogOutAuth() {
 
 export function useSignUpAuth(): SignUpAuthenticationService {
     const notifier: NotificationService = useNotification();
+    const router = useRouter()
 
     return {
         async signupAuth(email: string, userName: string, password: string) {
@@ -38,7 +42,21 @@ export function useSignUpAuth(): SignUpAuthenticationService {
 
                 notifier.successNotification('Signup Successful!')
 
-                return parseUserObject;
+                console.log(parseUserObject)
+
+                const userObject = {
+                    id: parseUserObject?.id,
+                    email: parseUserObject?.attributes?.email,
+                    userName: parseUserObject?.attributes?.username,
+                    emailVerified: false,
+                    createdAt: parseUserObject?.createdAt,
+                }
+
+                router.push('/')
+
+                return userObject;
+
+
 
             } catch (error) {
                 console.log(error)
@@ -50,6 +68,7 @@ export function useSignUpAuth(): SignUpAuthenticationService {
 
 export function useLoginAuth(): LoginAuthenticationService {
     const notifier: NotificationService = useNotification()
+    const router = useRouter()
 
     return {
         async loginAuth(email: string, password: string) {
@@ -68,6 +87,8 @@ export function useLoginAuth(): LoginAuthenticationService {
                     }
 
                     notifier.successNotification('Login Successful!')
+                    router.push('/')
+
                     return user;
                 }
             } catch (error) {
