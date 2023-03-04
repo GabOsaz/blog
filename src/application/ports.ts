@@ -9,7 +9,7 @@ export interface LogOutAuthenticationService {
 }
 
 export interface SignUpAuthenticationService {
-    signupAuth(email: string, userName: string, password: string): void
+    signupAuth(email: string, userName: string, password: string): Promise<User>
 }
 
 export interface UserStorageService {

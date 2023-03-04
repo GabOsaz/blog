@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSignupAuthenticate } from "src/application/authenticate";
 import styles from "./Auth.module.css";
-import { useRouter } from "next/router";
 
 function RegisterComponent() {
-  const router = useRouter();
   const { user, signupAuthenticate } = useSignupAuthenticate();
   const [username, setUserName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -80,7 +78,7 @@ function RegisterComponent() {
             />
           </div>
 
-          <button className={styles.button} disabled={true}>
+          <button className={styles.button} disabled={btnDisabled}>
             {formAction ? (
               <i className="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
             ) : (
