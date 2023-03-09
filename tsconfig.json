@@ -14,7 +14,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/pages/*": ["pages/*"],
+      "@/src/*": ["src/*"],
+      "@/ui/*": ["src/ui/*"],
+      "@/reusable/*": ["src/ui/reusable/*"],
+      "@/domain/*": ["src/domain/*"],
+      "@/application/*": ["src/application/*"],
+      "@/services/*": ["src/services/*"],
+      "@/hooks/*": ["src/hooks/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./jest.setup.ts"],
   "exclude": ["node_modules", "jest", "**/*.test.tsx"]
