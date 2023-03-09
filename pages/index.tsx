@@ -1,17 +1,11 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { userStorageAdapter } from "src/services/storageAdapter";
-import { useLogOutAuthenticate } from "src/application/authenticate";
+import Layout from "@/reusable/layout";
 
 export default function Home() {
   const storage = userStorageAdapter();
   const userName = storage.user.userName;
-
-  const { user, logOutAuthenticate } = useLogOutAuthenticate();
-
-  const handleLogout = () => {
-    logOutAuthenticate();
-  };
 
   return (
     <div className={styles.container}>
@@ -20,21 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        {userName !== "" ? (
-          <div>
-            Welcome aboard <b>{userName}</b>
-            <div>
-              <button onClick={handleLogout}>Logout</button>
-            </div>
-          </div>
-        ) : (
-          <div>
-            Please <a href="/register">create an</a> account or{" "}
-            <a href="/login">login</a> to your account.
-          </div>
-        )}
-      </div>
+      <Layout>
+        <div>
+          Welcome aboard <b>{userName}</b>
+        </div>
+      </Layout>
     </div>
   );
 }
