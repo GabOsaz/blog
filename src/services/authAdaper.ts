@@ -1,15 +1,14 @@
-import { useRouter } from 'next/router';
+import router from "next/router";
 import { LoginAuthenticationService, SignUpAuthenticationService, NotificationService } from '../application/ports';
 import { useNotification } from './notificationAdapter';
 
 
-export async function useLogOutAuth() {
+export function useLogOutAuth() {
     const notifier: NotificationService = useNotification();
-    const router = useRouter()
 
     try {
-        await Parse.User.logOut()
-        const currentUser = await Parse.User.current();
+        Parse.User.logOut()
+        const currentUser = Parse.User.current();
         console.log(currentUser)
 
         if (currentUser === null) {
@@ -28,7 +27,6 @@ export async function useLogOutAuth() {
 
 export function useSignUpAuth(): SignUpAuthenticationService {
     const notifier: NotificationService = useNotification();
-    const router = useRouter()
 
     return {
         async signupAuth(email: string, userName: string, password: string) {
@@ -68,7 +66,6 @@ export function useSignUpAuth(): SignUpAuthenticationService {
 
 export function useLoginAuth(): LoginAuthenticationService {
     const notifier: NotificationService = useNotification()
-    const router = useRouter()
 
     return {
         async loginAuth(email: string, password: string) {
