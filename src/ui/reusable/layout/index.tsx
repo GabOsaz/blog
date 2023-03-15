@@ -16,7 +16,11 @@ function Layout({ children }: layoutProps) {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        position: "relative",
+      }}
+    >
       {mounted &&
         (width >= 1024 ? (
           <DesktopNav>{children}</DesktopNav>
