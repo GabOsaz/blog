@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import useScreenSize from "@/hooks/useScreenSize";
@@ -8,15 +8,21 @@ type layoutProps = {
 };
 
 function Layout({ children }: layoutProps) {
+  const [mounted, setMounted] = useState(false);
   const { width } = useScreenSize();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div>
-      {width >= 1024 ? (
-        <DesktopNav>{children}</DesktopNav>
-      ) : (
-        <MobileNav>{children}</MobileNav>
-      )}
+      {mounted &&
+        (width >= 1024 ? (
+          <DesktopNav>{children}</DesktopNav>
+        ) : (
+          <MobileNav>{children}</MobileNav>
+        ))}
     </div>
   );
 }
