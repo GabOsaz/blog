@@ -6,6 +6,7 @@ type mobileLayoutProps = {
 function MobileNav({ children }: mobileLayoutProps) {
   return (
     <div>
+      <div>Mobile view brothers</div>
       <div>{children}</div>
     </div>
   );
