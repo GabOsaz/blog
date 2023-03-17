@@ -42,7 +42,7 @@ function DesktopNav({ children }) {
               className={
                 pathname === "/explore" ? styles.active : styles.navItem
               }
-              href="/"
+              href="/explore"
             >
               Explore
             </Link>
@@ -51,7 +51,7 @@ function DesktopNav({ children }) {
                 className={
                   pathname === "/articles" ? styles.active : styles.navItem
                 }
-                href="/"
+                href="/myArticles"
               >
                 My Articles
               </Link>
