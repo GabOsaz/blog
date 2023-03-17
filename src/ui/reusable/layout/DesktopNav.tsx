@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLogOutAuthenticate } from "@/application/authenticate";
 import { userStorageAdapter } from "@/services/storageAdapter";
 import styles from "./layout.module.css";
@@ -7,15 +7,23 @@ import { useRouter } from "next/router";
 import path from "path";
 
 function DesktopNav({ children }) {
+  const [user, setUser] = useState(false);
   const { logOutAuthenticate } = useLogOutAuthenticate();
   const storage = userStorageAdapter();
-  const user = storage.user;
+  const userObject = storage.user;
   const { pathname } = useRouter();
-  console.log(pathname);
 
   const handleLogout = () => {
     logOutAuthenticate();
   };
+
+  useEffect(() => {
+    if (userObject.userName !== "") {
+      setUser(true);
+    } else {
+      setUser(false);
+    }
+  }, [userObject]);
 
   return (
     <>
@@ -34,7 +42,7 @@ function DesktopNav({ children }) {
               className={
                 pathname === "/explore" ? styles.active : styles.navItem
               }
-              href="/"
+              href="/explore"
             >
               Explore
             </Link>
@@ -43,7 +51,7 @@ function DesktopNav({ children }) {
                 className={
                   pathname === "/articles" ? styles.active : styles.navItem
                 }
-                href="/"
+                href="/myArticles"
               >
                 My Articles
               </Link>

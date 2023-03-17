@@ -5,6 +5,7 @@ import Layout from "@/reusable/layout";
 
 export default function Home() {
   const storage = userStorageAdapter();
+  console.log(storage);
   const userName = storage.user.userName;
 
   return (
