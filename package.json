@@ -12,6 +12,7 @@
     "@next/font": "^13.1.6",
     "@parse/react-ssr": "^0.0.1-alpha.18",
     "@types/parse": "^3.0.2",
+    "cookies-js": "^1.2.3",
     "next": "13.0.5",
     "parse": "^3.5.1",
     "react": "18.2.0",

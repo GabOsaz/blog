@@ -1,6 +1,7 @@
 import router from "next/router";
 import { LoginAuthenticationService, SignUpAuthenticationService, NotificationService } from '../application/ports';
 import { useNotification } from './notificationAdapter';
+import Cookies from "cookies-js";
 
 
 export function useLogOutAuth() {
@@ -14,6 +15,7 @@ export function useLogOutAuth() {
         if (currentUser === null) {
             notifier.successNotification('User has logged out successfully')
             console.log("log out successful")
+            Cookies.expire("token")
             router.push('/login')
         } else {
             console.log("an error occurred while logging out this user please try again")
@@ -39,6 +41,8 @@ export function useSignUpAuth(): SignUpAuthenticationService {
                 await parseUserObject.signUp()
 
                 notifier.successNotification('Signup Successful!')
+
+                Cookies.set("token", parseUserObject?.id)
 
                 console.log(parseUserObject)
 
@@ -84,6 +88,7 @@ export function useLoginAuth(): LoginAuthenticationService {
                     }
 
                     notifier.successNotification('Login Successful!')
+                    Cookies.set("token", user?.id)
                     router.push('/')
 
                     return user;
