@@ -1,22 +1,14 @@
 import { useState, useEffect } from "react";
 import { useLoginAuthenticate } from "../../application/authenticate";
 import styles from "./Auth.module.css";
-import { useRouter } from "next/router";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formStatus, setFormStatus] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const router = useRouter();
 
   const { user, loginAuthenticate } = useLoginAuthenticate();
-
-  // if (!!user) {
-  //   router.push("/");
-  // }
-
-  console.log(user);
 
   function handleErrors() {
     if (email.length !== 0 && password.length !== 0) {
