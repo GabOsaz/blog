@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useMemo } from "react";
 import { User } from "src/domain/user";
 
 const UserContext = React.createContext<any>({});
@@ -40,11 +40,14 @@ export const AuthProvider = ({ children }: any) => {
     setUser(initialState);
   };
 
-  const value = {
-    user,
-    updateUser: setUser,
-    clearUser: () => setInitialState(),
-  };
+  const value = useMemo(() => {
+    const value = {
+      user,
+      updateUser: setUser,
+      clearUser: () => setInitialState(),
+    };
+    return value;
+  }, [user]);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

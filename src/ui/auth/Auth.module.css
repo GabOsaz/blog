@@ -81,12 +81,12 @@
   transition: 0.5s ease-out;
 }
 
-.button::disabled {
+.button:disabled {
   cursor: not-allowed;
   background: rgb(221, 35, 35);
 }
 
-.button::disabled:hover {
+.button:disabled:hover {
   cursor: not-allowed;
   color: #fcf9f9;
   background: rgb(221, 35, 35);

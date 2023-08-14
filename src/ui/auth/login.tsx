@@ -68,10 +68,7 @@ function Login() {
             />
           </div>
 
-          <button
-            className={styles.button}
-            disabled={formStatus || btnDisabled}
-          >
+          <button className={styles.button} disabled={btnDisabled}>
             {formStatus ? (
               <i className="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
             ) : (
