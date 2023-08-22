@@ -13,10 +13,10 @@
     "@parse/react-ssr": "^0.0.1-alpha.18",
     "@types/parse": "^3.0.2",
     "cookies-js": "^1.2.3",
-    "next": "13.0.5",
+    "next": "^13.4.16",
     "parse": "^3.5.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0"
   },
   "devDependencies": {
